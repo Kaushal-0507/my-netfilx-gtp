@@ -1,9 +1,12 @@
 import "./App.css";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
-import Header from "./components/Header";
+
 import Body from "./components/Body";
 import LandingPage from "./components/LandingPage";
 import Login from "./components/Login";
+import Browser from "./components/Browser";
+import { Provider } from "react-redux";
+import Store from "./utils/appStore";
 
 function App() {
   const appRouter = createBrowserRouter([
@@ -11,8 +14,6 @@ function App() {
       path: "/",
       element: (
         <>
-          {" "}
-          <Header />
           <Body />
         </>
       ),
@@ -25,13 +26,19 @@ function App() {
           path: "/login",
           element: <Login />,
         },
+        {
+          path: "/browser",
+          element: <Browser />,
+        },
       ],
     },
   ]);
   return (
-    <div>
-      <RouterProvider router={appRouter} />
-    </div>
+    <Provider store={Store}>
+      <div>
+        <RouterProvider router={appRouter} />
+      </div>
+    </Provider>
   );
 }
 
