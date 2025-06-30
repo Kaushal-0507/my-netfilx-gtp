@@ -47,7 +47,7 @@ const Header = ({ flag, app }) => {
               <img
                 alt="logo"
                 src="/NetflixGPT-logo.png"
-                className="w-[160px]"
+                className="w-[160px] h-[45px]"
               />
             </Link>
           </div>
