@@ -3,8 +3,8 @@ import VideoBackground from "./VideoBackground";
 
 const VideoTitle = ({ title, overview }) => {
   return (
-    <div className="absolute top-48 left-4 my-20 mx-10 z-10">
-      <p className=" text-[28px] font-bold my-3 text-white">{title}</p>
+    <div className="absolute top-46 left-4 my-20 mx-10 z-10">
+      <p className=" text-[32px] font-bold my-3 text-white">{title}</p>
       <p className=" max-w-[350px] text-sm font-semibold mb-2 text-gray-400">
         {overview}
       </p>
