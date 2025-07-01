@@ -7,9 +7,9 @@ import SecondaryContainer from "./SecondaryContainer";
 const Browser = () => {
   useNowPlayingMovie();
   return (
-    <div>
+    <div className="w-full h-full">
       <Header flag={false} app={false} />
-      <div className="pt-14">
+      <div className="pt-14 ">
         <MainContainer />
         <SecondaryContainer />
       </div>

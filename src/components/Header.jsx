@@ -28,7 +28,7 @@ const Header = ({ flag, app }) => {
   return (
     <div>
       {app ? (
-        <div className="absolute z-20 top-0 left-0 right-0 flex items-center justify-between py-2 px-[130px]">
+        <div className="absolute z-20 top-0 left-0 right-0 flex items-center justify-between py-2 px-[130px] ">
           <Link to="/">
             <img src="/NetflixGPT-logo.png" alt="logo" className="w-[200px]" />
           </Link>
@@ -41,7 +41,7 @@ const Header = ({ flag, app }) => {
           )}
         </div>
       ) : (
-        <div className="absolute z-20 top-0 left-0 right-0 flex items-center justify-between px-10 py-1.5 ">
+        <div className="absolute z-20 top-0 left-0 right-0 flex items-center justify-between px-10 py-1.5 bg-black ">
           <div>
             <Link to="/browser">
               <img
@@ -61,10 +61,9 @@ const Header = ({ flag, app }) => {
               >
                 <img
                   src={user.photoURL}
-                  alt="user-avatar"
                   className="w-[35px] mr-0.5 rounded-[5px]"
                 />
-                <RiArrowDropDownLine size={30} />
+                <RiArrowDropDownLine size={30} color="white" />
               </div>
               {userMenu && (
                 <ul className="absolute top-14 right-1 text-sm w-34 bg-black text-white pt-1.5 font-semibold">
