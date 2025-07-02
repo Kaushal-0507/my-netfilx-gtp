@@ -11,8 +11,11 @@ import usePopularTVShows from "../hooks/usePopularTVShows";
 import useTopRatedTVShows from "../hooks/useTopRatedTVShows";
 import useOnTheAirTVShows from "../hooks/useOnTheAirTVShows";
 import usePopularActors from "../hooks/usePopularActors";
+import { useSelector } from "react-redux";
+import GPTSearchPage from "./GPTSearchPage";
 
 const Browser = () => {
+  const showGPT = useSelector((store) => store.gpt);
   useNowPlayingMovie();
   usePopularMovie();
   useTopRatedMovie();
@@ -27,10 +30,16 @@ const Browser = () => {
   return (
     <div className="w-full h-full">
       <Header flag={false} app={false} />
-      <div>
-        <MainContainer />
-        <SecondaryContainer />
-      </div>
+      {!showGPT ? (
+        <div>
+          <MainContainer />
+          <SecondaryContainer />
+        </div>
+      ) : (
+        <div className=" mt-14">
+          <GPTSearchPage />
+        </div>
+      )}
     </div>
   );
 };

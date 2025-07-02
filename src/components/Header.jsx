@@ -8,12 +8,15 @@ import { RiArrowDropDownLine } from "react-icons/ri";
 import { IoIosHelpCircleOutline } from "react-icons/io";
 import { USER_AVATAR } from "../utils/constant";
 import { addFilter } from "../utils/filterSlice";
+import { setGPTPage, showGPTPage } from "../utils/gptSlice";
 
 const Header = ({ flag, app }) => {
   const dispatch = useDispatch();
   const selectedFilter = useSelector((state) => state.filter);
   const [userMenu, setUserMenu] = useState(false);
   const user = useSelector((store) => store.user);
+  const showGPT = useSelector((store) => store.gpt);
+
   const filters = ["Home", "Movies", "TV Shows", "Actors"];
 
   const handleSignOut = () => {
@@ -55,15 +58,16 @@ const Header = ({ flag, app }) => {
               />
             </Link>
 
-            <ul className="flex gap-7 text-white/70 items-center pt-3">
+            <ul className="flex gap-7 items-center pt-3">
               {filters.map((filter) => (
                 <li
                   key={filter}
                   className={`font-bold cursor-pointer hover:text-white ${
-                    selectedFilter === filter ? "text-white" : "text-white/70"
-                  }`}
+                    selectedFilter === filter ? "text-white" : "text-white/60"
+                  } ${showGPT ? "text-white/60" : ""}`}
                   onClick={(e) => {
                     dispatch(addFilter(filter));
+                    dispatch(setGPTPage());
                   }}
                 >
                   {filter}
@@ -73,7 +77,16 @@ const Header = ({ flag, app }) => {
           </div>
           <div>
             <div className=" flex gap-4">
-              <button className=" px-4 py-[7px] items-center bg-white/20 hover:bg-white/10 cursor-pointer text-white font-bold rounded-[5px]">
+              <button
+                className={`px-4 py-[7px] items-center bg-white/20  cursor-pointer  font-bold rounded-[5px] ${
+                  showGPT
+                    ? "bg-white/90 text-black hover:bg-white/10 hover:text-white"
+                    : "bg-white/20 text-white hover:bg-white/10 hover:text-white"
+                }`}
+                onClick={() => {
+                  dispatch(showGPTPage());
+                }}
+              >
                 GPT Search
               </button>
               <div
@@ -89,7 +102,7 @@ const Header = ({ flag, app }) => {
                 <RiArrowDropDownLine size={30} color="white" />
               </div>
               {userMenu && (
-                <ul className="absolute top-16 right-10 text-sm w-34 bg-black text-white pt-1.5 font-semibold">
+                <ul className="absolute top-16 right-10 text-sm w-34 bg-black border border-white text-white pt-1.5 font-semibold">
                   <li className="py-1.5 px-2 flex">
                     <img
                       src={user.photoURL}
