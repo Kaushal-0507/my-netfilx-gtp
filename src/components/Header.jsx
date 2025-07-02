@@ -3,14 +3,18 @@ import { Link, useNavigate } from "react-router-dom";
 import { CiUser } from "react-icons/ci";
 import { signOut } from "firebase/auth";
 import { auth } from "../utils/firebase";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { RiArrowDropDownLine } from "react-icons/ri";
 import { IoIosHelpCircleOutline } from "react-icons/io";
 import { USER_AVATAR } from "../utils/constant";
+import { addFilter } from "../utils/filterSlice";
 
 const Header = ({ flag, app }) => {
+  const dispatch = useDispatch();
+  const selectedFilter = useSelector((state) => state.filter);
   const [userMenu, setUserMenu] = useState(false);
   const user = useSelector((store) => store.user);
+  const filters = ["Home", "Movies", "TV Shows", "Actors"];
 
   const handleSignOut = () => {
     signOut(auth)
@@ -42,7 +46,7 @@ const Header = ({ flag, app }) => {
         </div>
       ) : (
         <div className="absolute z-20 top-0 left-0 right-0 flex items-center justify-between px-10 py-1.5 bg-black ">
-          <div>
+          <div className=" flex gap-7 ">
             <Link to="/browser">
               <img
                 alt="logo"
@@ -50,14 +54,33 @@ const Header = ({ flag, app }) => {
                 className="w-[160px] h-[45px]"
               />
             </Link>
+
+            <ul className="flex gap-7 text-white/70 items-center pt-3">
+              {filters.map((filter) => (
+                <li
+                  key={filter}
+                  className={`font-bold cursor-pointer hover:text-white ${
+                    selectedFilter === filter ? "text-white" : "text-white/70"
+                  }`}
+                  onClick={(e) => {
+                    dispatch(addFilter(filter));
+                  }}
+                >
+                  {filter}
+                </li>
+              ))}
+            </ul>
           </div>
           <div>
-            <div className="relative">
+            <div className=" flex gap-4">
+              <button className=" px-4 py-[7px] items-center bg-white/20 hover:bg-white/10 cursor-pointer text-white font-bold rounded-[5px]">
+                GPT Search
+              </button>
               <div
                 onClick={() => {
                   toggleUserMenu();
                 }}
-                className="py-1.5 flex items-center rounded-[5px] cursor-pointer "
+                className=" flex items-center rounded-[5px] cursor-pointer "
               >
                 <img
                   src={user.photoURL}
@@ -66,7 +89,7 @@ const Header = ({ flag, app }) => {
                 <RiArrowDropDownLine size={30} color="white" />
               </div>
               {userMenu && (
-                <ul className="absolute top-14 right-1 text-sm w-34 bg-black text-white pt-1.5 font-semibold">
+                <ul className="absolute top-16 right-10 text-sm w-34 bg-black text-white pt-1.5 font-semibold">
                   <li className="py-1.5 px-2 flex">
                     <img
                       src={user.photoURL}

@@ -6,12 +6,24 @@ import SecondaryContainer from "./SecondaryContainer";
 import usePopularMovie from "../hooks/usePopularMovie";
 import useTopRatedMovie from "../hooks/useTopRatedMovie";
 import useUpComingMovie from "../hooks/useUpComingMovie";
+import useTVShows from "../hooks/useTVShows";
+import usePopularTVShows from "../hooks/usePopularTVShows";
+import useTopRatedTVShows from "../hooks/useTopRatedTVShows";
+import useOnTheAirTVShows from "../hooks/useOnTheAirTVShows";
+import usePopularActors from "../hooks/usePopularActors";
 
 const Browser = () => {
   useNowPlayingMovie();
   usePopularMovie();
   useTopRatedMovie();
   useUpComingMovie();
+
+  useTVShows();
+  usePopularTVShows();
+  useTopRatedTVShows();
+  useOnTheAirTVShows();
+
+  usePopularActors();
   return (
     <div className="w-full h-full">
       <Header flag={false} app={false} />

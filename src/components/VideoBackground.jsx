@@ -17,7 +17,7 @@ const VideoBackground = ({ movieId, image }) => {
       /> */}
       <iframe
         src={`https://www.youtube.com/embed/${trailerVideo?.key}?autoplay=1&mute=1&controls=0&modestbranding=1&rel=0&playlist=${trailerVideo?.key}&disablekb=1&fs=0&iv_load_policy=3&end=140&version=3&enablejsapi=1`}
-        className="absolute top-0 left-44 w-10/12 h-[700px] pointer-events-none"
+        className="absolute top-0 left-44 w-10/12 h-screen pointer-events-none"
         allow="autoplay"
         onLoad={() => {
           const iframe = document.querySelector("iframe");

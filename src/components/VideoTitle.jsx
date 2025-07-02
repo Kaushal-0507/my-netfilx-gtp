@@ -5,7 +5,7 @@ const VideoTitle = ({ title, overview }) => {
   return (
     <div className="absolute top-46 left-4 my-20 mx-10 z-10">
       <p className=" text-[32px] font-bold my-3 text-white">{title}</p>
-      <p className=" max-w-[350px] text-sm font-semibold mb-2 text-gray-400">
+      <p className="max-w-[350px] text-sm font-semibold mb-2 text-gray-400 line-clamp-4 overflow-hidden text-ellipsis">
         {overview}
       </p>
       <button
