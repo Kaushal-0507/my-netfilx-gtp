@@ -1,9 +1,11 @@
 import React from "react";
 import MovieCard from "./MovieCard";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 
 const ActorLists = ({ title, tvShows }) => {
   const filter = useSelector((store) => store.filter);
+
+  const dispatch = useDispatch();
   return (
     <div className="py-2.5 ">
       <div className="flex-col">

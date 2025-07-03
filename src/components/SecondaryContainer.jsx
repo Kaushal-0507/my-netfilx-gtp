@@ -8,6 +8,7 @@ const SecondaryContainer = () => {
   const movies = useSelector((store) => store.movie);
   const tvShows = useSelector((store) => store.tv);
   const filter = useSelector((store) => store.filter);
+
   // console.log(filter);
   // console.log(tvShows?.popularActor);
 
@@ -52,7 +53,7 @@ const SecondaryContainer = () => {
         </div>
       )}
       {filter === "Actors" && (
-        <div className="absolute top-[10%] z-30 left-10 w-[93%] text-white">
+        <div className="absolute top-[10%] z-30  left-10 w-[93%] text-white">
           <ActorLists
             title={"Popular Actors"}
             tvShows={tvShows?.popularActor}

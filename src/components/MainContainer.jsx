@@ -8,25 +8,38 @@ const MainContainer = () => {
   const tvs = useSelector((store) => store.tv?.topRatedTV);
   const filter = useSelector((store) => store.filter);
 
-  console.log(tvs);
   if (!movies || !tvs) return null;
-  const mainMovie = movies[1];
+  const mainMovie = movies[0];
+  const mainHome = movies[1];
   const mainTV = tvs[0];
-  console.log(mainTV);
 
   const { original_title, overview, id, backdrop_path } = mainMovie;
   return (
     <div>
-      {(filter === "Home" || filter === "Movies") && (
+      {filter === "Home" && (
+        <div className="overflow-x-hidden">
+          <VideoBackground
+            movieId={mainHome?.id}
+            image={mainHome?.backdrop_path}
+          />
+          <VideoTitle
+            movieId={mainHome?.id}
+            title={mainHome?.original_title}
+            overview={mainHome?.overview}
+          />
+        </div>
+      )}
+      {filter === "Movies" && (
         <div className="overflow-x-hidden">
           <VideoBackground movieId={id} image={backdrop_path} />
-          <VideoTitle title={original_title} overview={overview} />
+          <VideoTitle title={original_title} movieId={id} overview={overview} />
         </div>
       )}
       {filter === "TV Shows" && (
         <div className="overflow-x-hidden">
           <VideoBackground movieId={mainTV?.id} image={mainTV?.backdrop_path} />
           <VideoTitle
+            movieId={mainTV?.id}
             title={mainTV?.original_name}
             overview={mainTV?.overview}
           />

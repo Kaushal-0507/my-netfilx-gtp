@@ -15,7 +15,7 @@ const VideoBackground = ({ movieId, image }) => {
     <div>
       {(filter === "Home" || filter === "Movies") && (
         <div className="w-full h-full">
-          <div className="absolute left-40 top-8 h-full w-1/3 bg-gradient-to-r from-black to-transparent z-10 pointer-events-none"></div>
+          <div className="absolute left-40 top-8 bottom-18 w-1/3 bg-gradient-to-r from-black to-transparent z-10 pointer-events-none"></div>
 
           {trailerVideo ? (
             <iframe
