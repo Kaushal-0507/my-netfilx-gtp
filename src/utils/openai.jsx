@@ -1,8 +1,7 @@
 import OpenAI from "openai";
-import { NETFLIX_GPT_API } from "./constant";
 
 export const openai = new OpenAI({
-  apiKey: NETFLIX_GPT_API,
+  apiKey: process.env.REACT_APP_OPENAI_KEY,
   dangerouslyAllowBrowser: true,
 });
 

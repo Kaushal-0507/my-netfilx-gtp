@@ -1,6 +1,5 @@
 import React, { useRef, useState } from "react";
 import { FaCircleArrowUp } from "react-icons/fa6";
-import { openai } from "../utils/openai";
 import useSearchResults from "../hooks/useSearchResults";
 import { useSelector } from "react-redux";
 import MovieCard from "./MovieCard";
