@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import VideoTitle from "./VideoTitle";
 import VideoBackground from "./VideoBackground";
 import { useSelector } from "react-redux";
@@ -9,39 +9,58 @@ const MainContainer = () => {
   const filter = useSelector((store) => store.filter);
 
   if (!movies || !tvs) return null;
+
   const mainMovie = movies[0];
   const mainHome = movies[1];
   const mainTV = tvs[0];
 
-  const { original_title, overview, id, backdrop_path } = mainMovie;
   return (
     <div>
       {filter === "Home" && (
         <div className="overflow-x-hidden">
           <VideoBackground
-            movieId={mainHome?.id}
+            mediaId={mainHome?.id}
             image={mainHome?.backdrop_path}
+            mediaType="movie"
           />
           <VideoTitle
-            movieId={mainHome?.id}
+            mediaId={mainHome?.id}
             title={mainHome?.original_title}
             overview={mainHome?.overview}
+            flag={true}
+            mediaType="movie"
           />
         </div>
       )}
       {filter === "Movies" && (
         <div className="overflow-x-hidden">
-          <VideoBackground movieId={id} image={backdrop_path} />
-          <VideoTitle title={original_title} movieId={id} overview={overview} />
+          <VideoBackground
+            mediaId={mainMovie?.id}
+            image={mainMovie?.backdrop_path}
+            mediaType="movie"
+          />
+          <VideoTitle
+            title={mainMovie?.original_title}
+            mediaId={mainMovie?.id}
+            overview={mainMovie?.overview}
+            flag={true}
+            mediaType="movie"
+          />
         </div>
       )}
       {filter === "TV Shows" && (
         <div className="overflow-x-hidden">
-          <VideoBackground movieId={mainTV?.id} image={mainTV?.backdrop_path} />
+          <VideoBackground
+            mediaId={mainTV?.id}
+            image={mainTV?.backdrop_path}
+            mediaType="tv"
+          />
           <VideoTitle
-            movieId={mainTV?.id}
+            mediaId={mainTV?.id}
             title={mainTV?.original_name}
             overview={mainTV?.overview}
+            flag={true}
+            mediaType="tv"
           />
         </div>
       )}

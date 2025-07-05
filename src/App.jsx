@@ -7,6 +7,7 @@ import Login from "./components/Login";
 import Browser from "./components/Browser";
 import { Provider } from "react-redux";
 import Store from "./utils/appStore";
+import Watch from "./components/Watch";
 
 function App() {
   const appRouter = createBrowserRouter([
@@ -29,6 +30,10 @@ function App() {
         {
           path: "/browser",
           element: <Browser />,
+        },
+        {
+          path: "/watch",
+          element: <Watch />,
         },
       ],
     },

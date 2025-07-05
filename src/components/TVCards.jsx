@@ -1,9 +1,9 @@
 import React from "react";
-import { TMDB_IMG_URL } from "../utils/constant";
 import { useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
+import { TMDB_IMG_URL } from "../utils/constant";
 
-const MovieCard = ({ poster, id }) => {
+const TVCard = ({ poster, id }) => {
   const filter = useSelector((store) => store.filter);
   const navigate = useNavigate();
   return (
@@ -12,7 +12,7 @@ const MovieCard = ({ poster, id }) => {
         <div
           className="relative transition-all duration-300  ease-in-out hover:scale-110 cursor-pointer"
           onClick={() => {
-            navigate(`/watch?v=${id}&type=movie`);
+            navigate(`/watch?v=${id}&type=tv`);
           }}
         >
           <img
@@ -28,4 +28,4 @@ const MovieCard = ({ poster, id }) => {
   );
 };
 
-export default MovieCard;
+export default TVCard;

@@ -11,6 +11,7 @@ const useTVTrailer = (movieId) => {
       `https://api.themoviedb.org/3/tv/${movieId}/videos?language=en-US`,
       options
     );
+
     const json = await data.json();
 
     const filterTrailer = json?.results;
@@ -23,7 +24,7 @@ const useTVTrailer = (movieId) => {
 
   useEffect(() => {
     if (movieId) getTVTrailer();
-  }, []);
+  }, [movieId]);
 };
 
 export default useTVTrailer;

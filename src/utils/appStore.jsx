@@ -5,6 +5,7 @@ import tvReducer from "./tvSlice";
 import filterReducer from "./filterSlice";
 import gptReducer from "./gptSlice";
 import searchResultReducer from "./searchResultSlice";
+import categoryReducer from "./categorySlice";
 
 const Store = configureStore({
   reducer: {
@@ -14,6 +15,7 @@ const Store = configureStore({
     filter: filterReducer,
     gpt: gptReducer,
     searchResult: searchResultReducer,
+    category: categoryReducer,
   },
 });
 

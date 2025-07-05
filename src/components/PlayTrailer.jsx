@@ -12,7 +12,7 @@ const PlayTrailer = (movieId) => {
   return (
     <>
       {playTrailer && (
-        <div className="absolute top-2 left-10 w-[94%] bottom-2 bg-black border-2 border-gray-200 rounded-lg text-white z-40">
+        <div className="absolute top-2 left-10 w-[94%] bottom-2 bg-black border-2 border-gray-200 rounded-lg text-white z-60">
           <div className="flex justify-between mx-10 items-center">
             <p className="text-3xl font-bold py-2.5">Trailer</p>
             <MdCancel

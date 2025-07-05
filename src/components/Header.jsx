@@ -16,6 +16,7 @@ const Header = ({ flag, app }) => {
   const [userMenu, setUserMenu] = useState(false);
   const user = useSelector((store) => store.user);
   const showGPT = useSelector((store) => store.gpt);
+  const navigate = useNavigate();
 
   const filters = ["Home", "Movies", "TV Shows", "Actors"];
 
@@ -68,6 +69,7 @@ const Header = ({ flag, app }) => {
                   onClick={(e) => {
                     dispatch(addFilter(filter));
                     dispatch(setGPTPage());
+                    navigate("/browser");
                   }}
                 >
                   {filter}
