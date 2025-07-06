@@ -10,6 +10,7 @@ import useMediaDetails from "../hooks/useMediaDetails";
 import useMediaRecommendations from "../hooks/useMediaRecommendation";
 import useSimilarMedia from "../hooks/useSimilarMedia";
 import useMediaCredits from "../hooks/useMediaCredits";
+import TVList from "./TVList";
 
 const WatchMedia = ({ mediaId, mediaType = "movie" }) => {
   const dispatch = useDispatch();
@@ -110,16 +111,32 @@ const WatchMedia = ({ mediaId, mediaType = "movie" }) => {
             <ActorLists title="Cast" tvShows={casts} />
           )}
 
-          {categorySelected === "Similar" && similar && (
-            <MovieList
-              title={`Similar ${mediaType === "movie" ? "Movies" : "TV Shows"}`}
-              movies={similar}
-            />
-          )}
+          {categorySelected === "Similar" &&
+            similar &&
+            (similar[0]?.media_type === "movie" || mediaType === "movie" ? (
+              <MovieList
+                title={`Similar ${
+                  mediaType === "movie" ? "Movies" : "TV Shows"
+                }`}
+                movies={similar}
+              />
+            ) : (
+              <TVList
+                title={`Similar ${
+                  mediaType === "movie" ? "Movies" : "TV Shows"
+                }`}
+                tvShows={similar}
+              />
+            ))}
 
-          {categorySelected === "Recommendation" && recommendations && (
-            <MovieList title={`Recommendations`} movies={recommendations} />
-          )}
+          {categorySelected === "Recommendation" &&
+            recommendations &&
+            (recommendations[0]?.media_type === "movie" ||
+            mediaType === "movie" ? (
+              <MovieList title="Recommendations" movies={recommendations} />
+            ) : (
+              <TVList title="Recommendations" tvShows={recommendations} />
+            ))}
         </div>
       </div>
     </>

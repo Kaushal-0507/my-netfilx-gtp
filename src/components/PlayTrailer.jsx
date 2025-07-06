@@ -2,13 +2,26 @@ import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { MdCancel } from "react-icons/md";
 import { hidePlayTrailer } from "../utils/movieSlice";
+import { useSearchParams } from "react-router-dom";
 
-const PlayTrailer = (movieId) => {
+const PlayTrailer = () => {
   const playTrailer = useSelector((store) => store.movie?.playTrailer);
   const trailerVideo = useSelector((store) => store.movie?.trailerMovie);
   const tvTrailer = useSelector((store) => store.tv?.tvTrailer);
   const filter = useSelector((store) => store.filter);
   const dispatch = useDispatch();
+
+  const [searchParams] = useSearchParams();
+  const mediaType = searchParams.get("type") || "movie";
+
+  // Determine which trailer to show
+  const showMovieTrailer =
+    (filter === "Home" || filter === "Movies" || mediaType === "movie") &&
+    trailerVideo?.key;
+
+  const showTVTrailer =
+    (filter === "TV Shows" || mediaType === "tv") && tvTrailer?.key;
+
   return (
     <>
       {playTrailer && (
@@ -22,9 +35,10 @@ const PlayTrailer = (movieId) => {
               }}
             />
           </div>
-          {(filter === "Home" || filter === "Movies") && (
+
+          {showMovieTrailer && !showTVTrailer && (
             <iframe
-              src={`https://www.youtube.com/embed/${trailerVideo?.key}?autoplay=1&modestbranding=1&rel=0&playlist=${trailerVideo?.key}&disablekb=1&fs=0&iv_load_policy=3&version=3&enablejsapi=1`}
+              src={`https://www.youtube.com/embed/${trailerVideo.key}?autoplay=1&modestbranding=1&rel=0&playlist=${trailerVideo.key}&disablekb=1&fs=0&iv_load_policy=3&version=3&enablejsapi=1`}
               className="w-full h-[90%] mx-auto"
               allow="autoplay"
               onLoad={() => {
@@ -36,9 +50,10 @@ const PlayTrailer = (movieId) => {
               }}
             />
           )}
-          {filter === "TV Shows" && (
+
+          {showTVTrailer && (
             <iframe
-              src={`https://www.youtube.com/embed/${tvTrailer?.key}?autoplay=1&modestbranding=1&rel=0&playlist=${tvTrailer?.key}&disablekb=1&fs=0&iv_load_policy=3&version=3&enablejsapi=1`}
+              src={`https://www.youtube.com/embed/${tvTrailer.key}?autoplay=1&modestbranding=1&rel=0&playlist=${tvTrailer.key}&disablekb=1&fs=0&iv_load_policy=3&version=3&enablejsapi=1`}
               className="w-full h-[90%] mx-auto"
               allow="autoplay"
               onLoad={() => {

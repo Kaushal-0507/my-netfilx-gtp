@@ -3,6 +3,7 @@ import PlayTrailer from "./PlayTrailer";
 import { useDispatch, useSelector } from "react-redux";
 import { showPlayTrailer } from "../utils/movieSlice";
 import { formatRuntime, getYearFromDate } from "../utils/helper";
+import { useNavigate } from "react-router-dom";
 
 const VideoTitle = ({
   title,
@@ -13,9 +14,12 @@ const VideoTitle = ({
   release,
   lang,
   genres,
+  mediaId,
 }) => {
   const playTrailer = useSelector((store) => store.movie?.playTrailer);
   const dispatch = useDispatch();
+  const filter = useSelector((store) => store.filter);
+  const navigate = useNavigate();
   return (
     <div>
       <div
@@ -78,6 +82,11 @@ const VideoTitle = ({
           <button
             type="button"
             className="py-2 cursor-pointer px-8 bg-white/10 rounded-[3px] font-bold text-white "
+            onClick={() => {
+              filter === "Home" || filter === "Movies"
+                ? navigate(`/watch?v=${mediaId}&type=movie`)
+                : navigate(`/watch?v=${mediaId}&type=tv`);
+            }}
           >
             More Info
           </button>
