@@ -6,6 +6,8 @@ import filterReducer from "./filterSlice";
 import gptReducer from "./gptSlice";
 import searchResultReducer from "./searchResultSlice";
 import categoryReducer from "./categorySlice";
+import actorReducer from "./actorSlice";
+import configReducer from "./configSlice";
 
 const Store = configureStore({
   reducer: {
@@ -16,6 +18,8 @@ const Store = configureStore({
     gpt: gptReducer,
     searchResult: searchResultReducer,
     category: categoryReducer,
+    actors: actorReducer,
+    config: configReducer,
   },
 });
 

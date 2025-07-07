@@ -2,6 +2,7 @@ import React from "react";
 import TVCard from "./TVCards";
 
 const TVList = ({ title, tvShows }) => {
+  if (!tvShows) return;
   return (
     <div className="py-2.5 ">
       <div className="flex-col">

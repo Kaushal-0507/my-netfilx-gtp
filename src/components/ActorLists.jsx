@@ -15,7 +15,12 @@ const ActorLists = ({ title, tvShows }) => {
           }`}
         >
           {tvShows?.map((tv) => (
-            <ActorCard key={tv?.id} poster={tv?.profile_path} name={tv?.name} />
+            <ActorCard
+              key={tv?.id}
+              id={tv?.id}
+              poster={tv?.profile_path}
+              name={tv?.name}
+            />
           ))}
         </div>
       </div>

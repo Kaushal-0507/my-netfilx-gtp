@@ -10,9 +10,10 @@ import {
 import { auth } from "../utils/firebase";
 import { useNavigate } from "react-router-dom";
 import Header from "./Header";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { addUser } from "../utils/userSlice";
 import { NETFLIX_BG_IMG, USER_AVATAR } from "../utils/constant";
+import { loginLanguage } from "../utils/languageConstant";
 
 const Login = () => {
   const [isLoginForm, setIsLoginForm] = useState(true);
@@ -25,6 +26,7 @@ const Login = () => {
   const email = useRef();
   const password = useRef();
   const navigate = useNavigate();
+  const lang = useSelector((store) => store.config.lang);
 
   const handleFormClick = () => {
     const emailMessage = validateEmail(email.current.value);
@@ -111,14 +113,16 @@ const Login = () => {
         }}
       >
         <p className="text-white font-bold text-[30px]  mb-6">
-          {isLoginForm ? "Sign In " : "Sign Up"}
+          {isLoginForm
+            ? loginLanguage[lang].signIn
+            : loginLanguage[lang].signUp}
         </p>
 
         {!isLoginForm ? (
           <input
             ref={name}
             type="text"
-            placeholder="Username"
+            placeholder={loginLanguage[lang].userPlaceholder}
             className="p-3.5 border-[1px] border-white w-full text-white text-2xl  rounded-[5px] mb-4"
           />
         ) : (
@@ -127,7 +131,7 @@ const Login = () => {
         <input
           ref={email}
           type="text"
-          placeholder="Email"
+          placeholder={loginLanguage[lang].emailPlaceholder}
           className="p-3.5 border-[1px] border-white w-full text-white text-2xl  rounded-[5px]"
         />
         <p className="text-red-600 text-sm mb-4">{emailMsg}</p>
@@ -135,7 +139,7 @@ const Login = () => {
           <input
             ref={password}
             type={showPassword ? "text" : "password"}
-            placeholder="Password"
+            placeholder={loginLanguage[lang].password}
             className="p-3.5 border-[1px] border-white w-full text-white text-2xl rounded-[5px] pr-10"
           />
           <p className="text-red-600 text-sm mb-4">{pwdMsg}</p>
@@ -164,21 +168,24 @@ const Login = () => {
           }}
           className="  p-2 bg-red-600 w-full font-bold cursor-pointer text-white text-2xl rounded-[2px]"
         >
-          {isLoginForm ? "Sign In" : "Sign Up"}
+          {isLoginForm
+            ? loginLanguage[lang].signIn
+            : loginLanguage[lang].signUp}
         </button>
-        <p className="text-2xl text-gray-500 w-full text-center">Or</p>
-        <button className="p-2 bg-white/10 w-full cursor-pointer font-semibold text-gray-300 text-2xl rounded-[2px] mb-4">
-          Sign in as guest
-        </button>
-        <p className="text-[16px] text-white ">
-          {isLoginForm ? "New to Netflix?" : "Already have an account!"}
+
+        <p className="text-[16px] my-2 text-white ">
+          {isLoginForm
+            ? loginLanguage[lang].newUser
+            : loginLanguage[lang].existUser}
           <span
             onClick={() => {
               toggleLoginForm();
             }}
             className="font-bold cursor-pointer pl-1"
           >
-            {isLoginForm ? "Sign up now" : "Sign in now"}
+            {isLoginForm
+              ? loginLanguage[lang].nowSignUp
+              : loginLanguage[lang].nowSignIn}
           </span>
         </p>
       </form>

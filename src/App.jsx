@@ -8,6 +8,8 @@ import Browser from "./components/Browser";
 import { Provider } from "react-redux";
 import Store from "./utils/appStore";
 import Watch from "./components/Watch";
+import Actor from "./components/Actor";
+import GPTSearchPage from "./components/GPTSearchPage";
 
 function App() {
   const appRouter = createBrowserRouter([
@@ -32,8 +34,17 @@ function App() {
           element: <Browser />,
         },
         {
+          path: "/gpt",
+          element: <GPTSearchPage />,
+        },
+        {
           path: "/watch",
           element: <Watch />,
+        },
+
+        {
+          path: "/actor",
+          element: <Actor />,
         },
       ],
     },

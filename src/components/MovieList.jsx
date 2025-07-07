@@ -3,6 +3,7 @@ import MovieCard from "./MovieCard";
 import { useNavigate } from "react-router-dom";
 
 const MovieList = ({ title, movies }) => {
+  if (!movies) return;
   return (
     <div className="py-2.5 ">
       <div className="flex-col">

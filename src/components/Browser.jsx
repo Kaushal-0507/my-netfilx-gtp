@@ -30,16 +30,11 @@ const Browser = () => {
   return (
     <div className="w-full h-full">
       <Header flag={false} app={false} />
-      {!showGPT ? (
-        <div>
-          <MainContainer />
-          <SecondaryContainer />
-        </div>
-      ) : (
-        <div className=" mt-14">
-          <GPTSearchPage />
-        </div>
-      )}
+
+      <div>
+        <MainContainer />
+        <SecondaryContainer />
+      </div>
     </div>
   );
 };
