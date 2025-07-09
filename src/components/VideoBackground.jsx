@@ -4,7 +4,7 @@ import useMovieTrailer from "../hooks/useMovieTrailer";
 import useTVTrailer from "../hooks/useTVTrailer";
 import { TMDB_IMG_URL } from "../utils/constant";
 
-const VideoBackground = ({ mediaId, poster, image, mediaType = "movie" }) => {
+const VideoBackground = ({ mediaId, poster, image, mediaType }) => {
   useMovieTrailer(mediaType === "movie" ? mediaId : null);
   useTVTrailer(mediaType === "tv" ? mediaId : null);
 
@@ -21,6 +21,12 @@ const VideoBackground = ({ mediaId, poster, image, mediaType = "movie" }) => {
     return () => window.removeEventListener("resize", checkMobile);
   }, []);
 
+  const showMovies = mediaType
+    ? mediaType === "movie"
+    : filter === "Home" || filter === "Movies";
+  const showTV = mediaType ? mediaType === "tv" : filter === "TV Shows";
+  const trailer = showTV ? tvTrailer : showMovies ? trailerVideo : null;
+
   // Mobile View
   if (isMobile) {
     return (
@@ -35,59 +41,29 @@ const VideoBackground = ({ mediaId, poster, image, mediaType = "movie" }) => {
     );
   }
 
-  // Desktop View with Filters
+  // Desktop View
   return (
     <div className="w-full h-full">
-      {(filter === "Home" || filter === "Movies") && (
-        <>
-          <div className="absolute left-40 top-8 bottom-18 w-1/3 bg-gradient-to-r from-black to-transparent z-10 pointer-events-none"></div>
-          {trailerVideo ? (
-            <iframe
-              src={`https://www.youtube.com/embed/${trailerVideo?.key}?autoplay=1&mute=1&controls=0&modestbranding=1&rel=0&playlist=${trailerVideo?.key}&disablekb=1&fs=0&iv_load_policy=3&end=140&version=3&enablejsapi=1`}
-              className="absolute top-0 left-40 w-10/12 h-screen pointer-events-none"
-              allow="autoplay"
-              onLoad={() => {
-                const iframe = document.querySelector("iframe");
-                iframe?.contentWindow?.postMessage(
-                  '{"event":"command","func":"setLoop","args":[true]}',
-                  "*"
-                );
-              }}
-            />
-          ) : (
-            <img
-              src={TMDB_IMG_URL + image}
-              className="absolute top-14 left-62 w-[78%] h-[480px] z-5 object-cover"
-              alt="Movie backdrop"
-            />
-          )}
-        </>
-      )}
-
-      {filter === "TV Shows" && (
-        <>
-          <div className="absolute left-40 top-8 h-full w-1/3 bg-gradient-to-r from-black to-transparent z-10 pointer-events-none"></div>
-          {tvTrailer ? (
-            <iframe
-              src={`https://www.youtube.com/embed/${tvTrailer?.key}?autoplay=1&mute=1&controls=0&modestbranding=1&rel=0&playlist=${tvTrailer?.key}&disablekb=1&fs=0&iv_load_policy=3&end=140&version=3&enablejsapi=1`}
-              className="absolute top-0 left-40 w-10/12 h-screen pointer-events-none"
-              allow="autoplay"
-              onLoad={() => {
-                const iframe = document.querySelector("iframe");
-                iframe?.contentWindow?.postMessage(
-                  '{"event":"command","func":"setLoop","args":[true]}',
-                  "*"
-                );
-              }}
-            />
-          ) : (
-            <img
-              src={TMDB_IMG_URL + image}
-              className="absolute top-14 left-62 w-[78%] h-[480px] z-5 object-cover"
-              alt="TV Show backdrop"
-            />
-          )}
-        </>
+      <div className="absolute left-40 top-8 h-full w-1/3 bg-gradient-to-r from-black to-transparent z-10 pointer-events-none"></div>
+      {trailer ? (
+        <iframe
+          src={`https://www.youtube.com/embed/${trailer?.key}?autoplay=1&mute=1&controls=0&modestbranding=1&rel=0&playlist=${trailer?.key}&disablekb=1&fs=0&iv_load_policy=3&end=140&version=3&enablejsapi=1`}
+          className="absolute top-0 left-40 w-10/12 h-screen pointer-events-none"
+          allow="autoplay"
+          onLoad={() => {
+            const iframe = document.querySelector("iframe");
+            iframe?.contentWindow?.postMessage(
+              '{"event":"command","func":"setLoop","args":[true]}',
+              "*"
+            );
+          }}
+        />
+      ) : (
+        <img
+          src={TMDB_IMG_URL + image}
+          className="absolute top-14 left-62 w-[78%] h-[480px] z-5 object-cover"
+          alt={showTV ? "TV Show backdrop" : "Movie backdrop"}
+        />
       )}
     </div>
   );

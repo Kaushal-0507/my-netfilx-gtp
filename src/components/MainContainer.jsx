@@ -2,11 +2,14 @@ import React from "react";
 import VideoTitle from "./VideoTitle";
 import VideoBackground from "./VideoBackground";
 import { useSelector } from "react-redux";
+import { useSearchParams } from "react-router-dom";
 
 const MainContainer = () => {
   const movies = useSelector((store) => store.movie?.nowPlayingMovies);
   const tvs = useSelector((store) => store.tv?.topRatedTV);
   const filter = useSelector((store) => store.filter);
+  const [searchParams] = useSearchParams();
+  const mediaType = searchParams.get("type") || "movie";
 
   if (!movies || !tvs) return null;
 
@@ -21,7 +24,7 @@ const MainContainer = () => {
           <VideoBackground
             mediaId={mainHome?.id}
             image={mainHome?.backdrop_path}
-            mediaType="movie"
+            mediaType={mediaType}
             poster={mainHome?.poster_path}
           />
           <VideoTitle
@@ -29,7 +32,7 @@ const MainContainer = () => {
             title={mainHome?.original_title}
             overview={mainHome?.overview}
             flag={true}
-            mediaType="movie"
+            mediaType={mediaType}
           />
         </div>
       )}
@@ -38,7 +41,7 @@ const MainContainer = () => {
           <VideoBackground
             mediaId={mainMovie?.id}
             image={mainMovie?.backdrop_path}
-            mediaType="movie"
+            mediaType={mediaType}
             poster={mainMovie?.poster_path}
           />
           <VideoTitle
@@ -46,7 +49,7 @@ const MainContainer = () => {
             mediaId={mainMovie?.id}
             overview={mainMovie?.overview}
             flag={true}
-            mediaType="movie"
+            mediaType={mediaType}
           />
         </div>
       )}
@@ -55,7 +58,7 @@ const MainContainer = () => {
           <VideoBackground
             mediaId={mainTV?.id}
             image={mainTV?.backdrop_path}
-            mediaType="tv"
+            mediaType={mediaType}
             poster={mainTV?.poster_path}
           />
           <VideoTitle
@@ -63,7 +66,7 @@ const MainContainer = () => {
             title={mainTV?.original_name}
             overview={mainTV?.overview}
             flag={true}
-            mediaType="tv"
+            mediaType={mediaType}
           />
         </div>
       )}
