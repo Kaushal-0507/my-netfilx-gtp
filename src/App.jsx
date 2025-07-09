@@ -1,50 +1,74 @@
+import React, { Suspense, lazy } from "react";
 import "./App.css";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
-
-import Body from "./components/Body";
-import LandingPage from "./components/LandingPage";
-import Login from "./components/Login";
-import Browser from "./components/Browser";
 import { Provider } from "react-redux";
 import Store from "./utils/appStore";
-import Watch from "./components/Watch";
-import Actor from "./components/Actor";
-import GPTSearchPage from "./components/GPTSearchPage";
+
+const Body = lazy(() => import("./components/Body"));
+const LandingPage = lazy(() => import("./components/LandingPage"));
+const Login = lazy(() => import("./components/Login"));
+const Browser = lazy(() => import("./components/Browser"));
+const Watch = lazy(() => import("./components/Watch"));
+const Actor = lazy(() => import("./components/Actor"));
+const GPTSearchPage = lazy(() => import("./components/GPTSearchPage"));
 
 function App() {
   const appRouter = createBrowserRouter([
     {
       path: "/",
       element: (
-        <>
+        <Suspense fallback={<div className="text-white text-center py-20">Loading...</div>}>
           <Body />
-        </>
+        </Suspense>
       ),
       children: [
         {
           path: "/",
-          element: <LandingPage />,
+          element: (
+            <Suspense fallback={<div className="text-white text-center py-20">Loading...</div>}>
+              <LandingPage />
+            </Suspense>
+          ),
         },
         {
           path: "/login",
-          element: <Login />,
+          element: (
+            <Suspense fallback={<div className="text-white text-center py-20">Loading...</div>}>
+              <Login />
+            </Suspense>
+          ),
         },
         {
           path: "/browser",
-          element: <Browser />,
+          element: (
+            <Suspense fallback={<div className="text-white text-center py-20">Loading...</div>}>
+              <Browser />
+            </Suspense>
+          ),
         },
         {
           path: "/gpt",
-          element: <GPTSearchPage />,
+          element: (
+            <Suspense fallback={<div className="text-white text-center py-20">Loading...</div>}>
+              <GPTSearchPage />
+            </Suspense>
+          ),
         },
         {
           path: "/watch",
-          element: <Watch />,
+          element: (
+            <Suspense fallback={<div className="text-white text-center py-20">Loading...</div>}>
+              <Watch />
+            </Suspense>
+          ),
         },
-
         {
           path: "/actor",
-          element: <Actor />,
+          element: (
+            <Suspense fallback={<div className="text-white text-center py-20">Loading...</div>}>
+              <Actor />
+            </Suspense>
+          ),
         },
       ],
     },
