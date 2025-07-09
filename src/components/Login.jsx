@@ -99,14 +99,14 @@ const Login = () => {
   return (
     <div className="relative w-full">
       <Header flag={false} app={true} />
-      <div className="absolute top-0 left-0 right-0 w-full h-[550px] sm:h-[550px] md:h-[597px] z-10 bg-black/50"></div>
+      <div className="absolute top-0 left-0 right-0 w-full h-screen sm:h-[550px] md:h-[597px] z-10 bg-black/50"></div>
       <img
-        className="w-full h-[550px] sm:h-[597px] md:h-[597px] object-cover"
+        className="w-full h-screen sm:h-[597px] md:h-[597px] object-cover"
         src={NETFLIX_BG_IMG}
         alt="netflix-bg"
       />
       <form
-        className="absolute top-[70px] sm:top-[60px] md:top-[75px] z-40 w-[90vw] max-w-[350px] sm:max-w-[400px] md:min-w-[500px] md:mx-[270px] bg-black/70 rounded-[5px] px-4 sm:px-8 md:px-14 pt-6 pb-6 left-1/2 -translate-x-1/2 md:-translate-x-full"
+        className="absolute top-[130px] sm:top-[60px] md:top-[75px] z-40 w-[90vw] max-w-[350px] sm:max-w-[400px] md:min-w-[500px] md:mx-[270px] bg-black/70 rounded-[5px] px-4 sm:px-8 md:px-14 pt-6 pb-6 left-1/2 -translate-x-1/2 md:-translate-x-full"
         onSubmit={(e) => {
           e.preventDefault();
         }}

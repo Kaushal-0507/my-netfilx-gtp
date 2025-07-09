@@ -67,7 +67,7 @@ const WatchMedia = ({ mediaId, mediaType = "movie" }) => {
 
   return (
     <>
-      <div className="">
+      <div className="mt-6 md:mt-6">
         <VideoBackground
           mediaId={id}
           image={backdrop_path}
@@ -83,7 +83,7 @@ const WatchMedia = ({ mediaId, mediaType = "movie" }) => {
           genres={genres}
         />
       </div>
-      <div className="absolute z-50 top-[90%] left-4 md:left-10 md:right-10 right-4 bg-black text-white">
+      <div className="absolute z-50 top-[60%] md:top-[90%] left-4 md:left-10 md:right-10 right-4  text-white">
         <div className="flex md:gap-8 gap-5 md:mb-2  mb-0">
           {watchCategories.map((category) => (
             <button

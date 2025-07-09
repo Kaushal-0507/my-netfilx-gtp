@@ -16,7 +16,6 @@ const MainContainer = () => {
   const mainMovie = movies[0];
   const mainHome = movies[1];
   const mainTV = tvs[2];
-  console.log(mainTV);
 
   return (
     <div className="">

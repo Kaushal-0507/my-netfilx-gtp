@@ -27,18 +27,14 @@ const VideoBackground = ({ mediaId, poster, image, mediaType }) => {
   const showTV = mediaType ? mediaType === "tv" : tvTrailer;
   const trailer = showTV ? tvTrailer : showMovies ? trailerVideo : null;
 
-  console.log(trailer);
-  console.log(mediaType);
-  console.log("tv", tvTrailer);
-
   // Mobile View
   if (isMobile) {
     return (
-      <div className="flex flex-col items-center justify-end w-full h-94 sm:h-80 md:h-96 relative bg-black">
+      <div className="flex flex-col items-center justify-end w-full h-full pt-3 md:pt-0 sm:h-80 md:h-96 relative">
         <img
           src={TMDB_IMG_URL + (poster || image)}
           alt="Media poster"
-          className="w-64 h-82 sm:w-52 sm:h-80 object-cover rounded-lg shadow-lg mx-auto mt-8"
+          className="w-80 h-96 sm:w-96 sm:h-[28rem] object-cover rounded-lg shadow-lg mx-auto mt-8"
         />
         <div className="absolute bottom-0 left-0 w-full h-24 bg-gradient-to-t from-black to-transparent z-10"></div>
       </div>

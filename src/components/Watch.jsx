@@ -11,7 +11,9 @@ const Watch = () => {
   return (
     <div className="">
       <Header flag={false} app={false} />
-      <WatchMedia mediaId={mediaId} mediaType={mediaType} />
+      <div className="h-full">
+        <WatchMedia mediaId={mediaId} mediaType={mediaType} />
+      </div>
     </div>
   );
 };

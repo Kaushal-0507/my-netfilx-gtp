@@ -9,7 +9,7 @@ const GeminiResults = () => {
 
   if (!geminiResults)
     return (
-      <div className="absolute md:left-[38%] left-14 top-[30%]  md:text-3xl text-[20px] font-bold">
+      <div className="absolute md:left-[38%] left-14 top-[30%]  md:text-3xl text-3xl font-bold">
         What's on your mind?
       </div>
     );

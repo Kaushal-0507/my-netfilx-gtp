@@ -41,7 +41,7 @@ const VideoTitle = ({
           </div>
         )}
         <p className="text-[32px] font-bold mb-2 text-white">{title}</p>
-        <p className="max-w-[350px] text-sm font-semibold mb-2 text-gray-400 line-clamp-4 overflow-hidden text-ellipsis">
+        <p className="max-w-[350px] text-sm font-semibold mb-2 text-gray-500 line-clamp-4 overflow-hidden text-ellipsis">
           {overview}
         </p>
         {duration && (
@@ -70,7 +70,7 @@ const VideoTitle = ({
         )}
         <button
           type="button"
-          className={`py-2 cursor-pointer px-8 mr-2 bg-red-500/60 rounded-[3px] font-bold text-white ${
+          className={`py-2 cursor-pointer px-8 mr-2 bg-red-700/50 rounded-[3px] font-bold text-white ${
             duration ? "w-40" : ""
           } `}
           onClick={() => {
@@ -82,7 +82,7 @@ const VideoTitle = ({
         {flag && (
           <button
             type="button"
-            className="py-2 cursor-pointer px-8 bg-white/10 rounded-[3px] font-bold text-white "
+            className="py-2 cursor-pointer px-8 bg-white/30 rounded-[3px] font-bold text-white "
             onClick={() => {
               filter === "Home" || filter === "Movies"
                 ? navigate(`/watch?v=${mediaId}&type=movie`)
@@ -94,7 +94,7 @@ const VideoTitle = ({
         )}
       </div>
       {/* Mobile: relative, small text, above poster */}
-      <div className="block lg:hidden absolute top-74 z-20 w-full px-4 pt-4 pb-2 text-center -mb-8">
+      <div className="block lg:hidden absolute top-80 z-20 w-full px-4 pt-4 pb-2 text-center -mb-8">
         {genres && (
           <div className="flex flex-wrap gap-2 justify-center mb-1.5">
             {genres.map((genre) => (
@@ -107,8 +107,8 @@ const VideoTitle = ({
             ))}
           </div>
         )}
-        <p className="text-lg font-bold mb-1 text-white">{title}</p>
-        <p className="max-w-10/12 text-xs font-semibold mb-1 text-gray-400 line-clamp-3 overflow-hidden text-ellipsis mx-auto">
+        <p className="text-[20px] font-bold md:mb-1 text-white">{title}</p>
+        <p className="max-w-10/12 text-sm font-semibold mb-1 text-gray-400 line-clamp-3 overflow-hidden text-ellipsis mx-auto">
           {overview}
         </p>
         {duration && (
@@ -137,7 +137,7 @@ const VideoTitle = ({
         )}
         <button
           type="button"
-          className="py-1 px-4 mr-2 bg-red-500/60 rounded-[3px] font-bold text-white text-xs"
+          className="py-2 px-5 mr-2 bg-red-500/60 rounded-[3px] font-bold text-white text-xs"
           onClick={() => {
             dispatch(showPlayTrailer());
           }}
@@ -147,7 +147,7 @@ const VideoTitle = ({
         {flag && (
           <button
             type="button"
-            className="py-1 px-4 bg-white/10 rounded-[3px] font-bold text-white text-xs"
+            className="py-2 px-5 bg-white/10 rounded-[3px] font-bold text-white text-xs"
             onClick={() => {
               filter === "Home" || filter === "Movies"
                 ? navigate(`/watch?v=${mediaId}&type=movie`)

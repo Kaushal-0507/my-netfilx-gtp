@@ -10,9 +10,9 @@ const LandingPage = () => {
   return (
     <div className="w-full relative">
       <Header flag={true} app={true} />
-      <div className="absolute top-0 left-0 right-0 w-full h-[518px] sm:h-[597px] md:h-[597px] z-10 bg-black/50"></div>
+      <div className="absolute top-0 left-0 right-0 w-full h-screen sm:h-[597px] md:h-[597px] z-10 bg-black/50 overflow-hidden"></div>
       <img
-        className="w-full h-[518px] sm:h-[597px] md:h-[597px] object-cover"
+        className="w-full h-screen sm:h-[597px] md:h-[597px] object-cover"
         src={NETFLIX_BG_IMG}
         alt="netflix-bg"
       />

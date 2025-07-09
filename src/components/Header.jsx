@@ -62,9 +62,7 @@ const Header = ({ flag, app }) => {
             <select
               name="language"
               className="bg-white/15 outline-1 rounded-[3px] text-white px-2 py-1 text-sm sm:text-base md:py-1.5 "
-              onClick={(e) => {
-                handleChangeLanguage(e);
-              }}
+              onChange={handleChangeLanguage}
             >
               {SUPPORTED_LANGUAGES.map((lang) => (
                 <option
@@ -184,7 +182,7 @@ const Header = ({ flag, app }) => {
             </div>
           </div>
           {/* Mobile/Tablet filters at the very bottom */}
-          <ul className="fixed bottom-0 left-0 right-0 z-60 flex lg:hidden gap-6 sm:gap-5 md:gap-7 items-center justify-center w-full bg-black py-3 border-t border-white/10">
+          <ul className="fixed bottom-0 left-0 right-0 z-60 flex lg:hidden gap-10 sm:gap-5 md:gap-7 items-center justify-center w-full bg-black py-3 border-t border-white/10">
             {filters.map((filter) => (
               <li
                 key={filter}
