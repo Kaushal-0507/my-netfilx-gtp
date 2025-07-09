@@ -8,7 +8,7 @@ const ActorCard = ({ poster, name, id }) => {
     <>
       {poster && (
         <div
-          className="relative min-w-46 cursor-pointer"
+          className="relative min-w-28 max-w-28 sm:min-w-46 sm:max-w-46 cursor-pointer"
           onClick={() => {
             navigate("/actor?a=" + id);
           }}
@@ -16,11 +16,10 @@ const ActorCard = ({ poster, name, id }) => {
           <img
             src={TMDB_IMG_URL + poster}
             alt="poster"
-            className=" shadow-lg w-full min-46 max-w-46 "
+            className="shadow-lg w-full min-28 max-w-28 sm:min-46 sm:max-w-46 "
           />
-
           {name && (
-            <div className="absolute ml-2 p-2 bottom-2 font-bold text-white bg-black rounded-[3px] w-full">
+            <div className="absolute ml-1 sm:ml-2 p-1 sm:p-2 bottom-2 font-bold text-xs sm:text-base text-white bg-black rounded-[3px] w-full">
               {name}
             </div>
           )}

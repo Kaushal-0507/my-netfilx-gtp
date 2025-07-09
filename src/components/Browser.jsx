@@ -28,10 +28,9 @@ const Browser = () => {
 
   usePopularActors();
   return (
-    <div className="w-full h-full">
+    <div className="w-full h-full min-h-screen bg-black">
       <Header flag={false} app={false} />
-
-      <div>
+      <div className="pt-2 sm:pt-4">
         <MainContainer />
         <SecondaryContainer />
       </div>

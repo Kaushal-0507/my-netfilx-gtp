@@ -50,9 +50,11 @@ const MediaDetails = ({ mediaType = "movie" }) => {
   return (
     <div className="text-white bg-white/10 p-6 rounded-lg">
       <div>
-        <h1 className="text-4xl font-bold mb-2">{name}</h1>
+        <h1 className="md:text-4xl text-2xl font-bold mb-2">{name}</h1>
         {tagline && (
-          <p className="text-xl italic text-gray-300 mb-4">"{tagline}"</p>
+          <p className="md:text-xl text-[16px] italic text-gray-300 mb-4">
+            "{tagline}"
+          </p>
         )}
       </div>
 
@@ -62,8 +64,10 @@ const MediaDetails = ({ mediaType = "movie" }) => {
           {/* Left Column - Details */}
           <div className="md:col-span-2">
             <div className="mb-8">
-              <h2 className="text-2xl font-bold mb-4">Overview</h2>
-              <p className="text-lg">{overview}</p>
+              <h2 className="md:text-2xl text-[20px] font-bold mb-4">
+                Overview
+              </h2>
+              <p className="md:text-lg text-[16px]">{overview}</p>
             </div>
 
             <div className="grid grid-cols-2 gap-4 mb-8">

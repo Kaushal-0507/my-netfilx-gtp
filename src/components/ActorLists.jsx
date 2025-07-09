@@ -2,24 +2,22 @@ import React from "react";
 import ActorCard from "./ActorCard";
 import { useSelector } from "react-redux";
 
-const ActorLists = ({ title, tvShows }) => {
+const ActorLists = ({ title, actors }) => {
   const filter = useSelector((store) => store.filter);
 
   return (
-    <div className="py-2.5 ">
+    <div className="py-1 sm:py-2.5 ">
       <div>
-        <p className="font-bold py-2 text-[22px]">{title}</p>
+        <p className="font-bold py-1 sm:py-2 text-lg sm:text-[22px]">{title}</p>
         <div
-          className={` overflow-x-scroll  [&::-webkit-scrollbar]:hidden  ${
-            filter === "Actors" ? "flex gap-4" : "flex gap-4"
-          }`}
+          className={`overflow-x-scroll [&::-webkit-scrollbar]:hidden flex gap-4 sm:gap-4`}
         >
-          {tvShows?.map((tv) => (
+          {actors?.map((actor) => (
             <ActorCard
-              key={tv?.id}
-              id={tv?.id}
-              poster={tv?.profile_path}
-              name={tv?.name}
+              key={actor?.id}
+              id={actor?.id}
+              poster={actor?.profile_path}
+              name={actor?.name}
             />
           ))}
         </div>

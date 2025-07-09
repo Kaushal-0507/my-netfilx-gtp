@@ -10,7 +10,7 @@ const TVCard = ({ poster, id }) => {
     <div>
       {poster && (
         <div
-          className="relative transition-all duration-300  ease-in-out hover:scale-110 cursor-pointer"
+          className="relative min-w-28 max-w-28 sm:min-w-46 sm:max-w-46 cursor-pointer"
           onClick={() => {
             navigate(`/watch?v=${id}&type=tv`);
           }}
@@ -18,9 +18,7 @@ const TVCard = ({ poster, id }) => {
           <img
             src={TMDB_IMG_URL + poster}
             alt="poster"
-            className={`  shadow-lg hover:shadow-xl transition-all duration-300 ${
-              filter === "Actors" ? "max-w-44" : "min-w-46 max-w-46"
-            }`}
+            className={`shadow-lg hover:shadow-xl transition-all duration-300 w-full min-28 max-w-28 sm:min-46 sm:max-w-46`}
           />
         </div>
       )}

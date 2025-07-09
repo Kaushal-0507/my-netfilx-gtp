@@ -30,20 +30,24 @@ const Actor = () => {
   return (
     <>
       <Header flag={false} app={false} />
-      <div className="mt-14 mx-10 w-[93%] rounded-lg bg-white/10 text-white">
-        <ActorDetails actor={actorDetails} />
-        <div className="w-[96%]  mx-6">
-          <p className="font-black text-2xl mb-3">Images</p>
+      <div className="mt-14 md:mx-10 mx-3 w-[93%] md:rounded-lg rounded-[5px]  text-white">
+        <div className=" bg-white/10">
+          <ActorDetails actor={actorDetails} />
+        </div>
+        <div className="w-[96%] mx-2 mt-4 md:mx-6">
+          <p className="font-black md:text-2xl text-[20px]   mb-1 md:mb-3">
+            Images
+          </p>
           <div className="flex gap-4 overflow-x-scroll [&::-webkit-scrollbar]:hidden">
             {actorImages.map((image) => (
               <ActorCard key={image?.file_path} poster={image?.file_path} />
             ))}
           </div>
         </div>
-        <div className="mx-6">
+        <div className="mx-2 md:mx-6">
           <MovieList title="Movies" movies={actorMovies} />
         </div>
-        <div className="mx-6">
+        <div className="mx-2 md:mx-6 md:mb-0 mb-14">
           <TVList title="TV Shows" tvShows={actorTVs} />
         </div>
       </div>

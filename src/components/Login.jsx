@@ -97,33 +97,31 @@ const Login = () => {
     setIsLoginForm(!isLoginForm);
   };
   return (
-    <div>
+    <div className="relative w-full">
       <Header flag={false} app={true} />
-      <div className="absolute top-0 left-0 right-0 w-full h-[597px] z-10 bg-black/50"></div>
+      <div className="absolute top-0 left-0 right-0 w-full h-[550px] sm:h-[550px] md:h-[597px] z-10 bg-black/50"></div>
       <img
-        className="w-full max-h-[597px]"
+        className="w-full h-[550px] sm:h-[597px] md:h-[597px] object-cover"
         src={NETFLIX_BG_IMG}
         alt="netflix-bg"
       />
-
       <form
-        className="absolute top-[75px] z-40 min-w-[500px]  mx-[400px] bg-black/70 rounded-[5px] px-14 pt-6 pb-6"
+        className="absolute top-[70px] sm:top-[60px] md:top-[75px] z-40 w-[90vw] max-w-[350px] sm:max-w-[400px] md:min-w-[500px] md:mx-[270px] bg-black/70 rounded-[5px] px-4 sm:px-8 md:px-14 pt-6 pb-6 left-1/2 -translate-x-1/2 md:-translate-x-full"
         onSubmit={(e) => {
           e.preventDefault();
         }}
       >
-        <p className="text-white font-bold text-[30px]  mb-6">
+        <p className="text-white font-bold text-2xl sm:text-3xl md:text-[30px] mb-6">
           {isLoginForm
             ? loginLanguage[lang].signIn
             : loginLanguage[lang].signUp}
         </p>
-
         {!isLoginForm ? (
           <input
             ref={name}
             type="text"
             placeholder={loginLanguage[lang].userPlaceholder}
-            className="p-3.5 border-[1px] border-white w-full text-white text-2xl  rounded-[5px] mb-4"
+            className="p-2 sm:p-3.5 border-[1px] border-white w-full text-white text-lg sm:text-2xl rounded-[5px] mb-4"
           />
         ) : (
           ""
@@ -132,17 +130,17 @@ const Login = () => {
           ref={email}
           type="text"
           placeholder={loginLanguage[lang].emailPlaceholder}
-          className="p-3.5 border-[1px] border-white w-full text-white text-2xl  rounded-[5px]"
+          className="p-2 sm:p-3.5 border-[1px] border-white w-full text-white text-lg sm:text-2xl rounded-[5px]"
         />
-        <p className="text-red-600 text-sm mb-4">{emailMsg}</p>
+        <p className="text-red-600 text-xs sm:text-sm mb-4">{emailMsg}</p>
         <div className="relative">
           <input
             ref={password}
             type={showPassword ? "text" : "password"}
             placeholder={loginLanguage[lang].password}
-            className="p-3.5 border-[1px] border-white w-full text-white text-2xl rounded-[5px] pr-10"
+            className="p-2 sm:p-3.5 border-[1px] border-white w-full text-white text-lg sm:text-2xl rounded-[5px] pr-10"
           />
-          <p className="text-red-600 text-sm mb-4">{pwdMsg}</p>
+          <p className="text-red-600 text-xs sm:text-sm mb-4">{pwdMsg}</p>
           <div className="absolute top-1/2 right-3 transform -translate-y-1/2">
             {showPassword ? (
               <FaRegEye
@@ -161,19 +159,17 @@ const Login = () => {
             )}
           </div>
         </div>
-
         <button
           onClick={() => {
             handleFormClick();
           }}
-          className="  p-2 bg-red-600 w-full font-bold cursor-pointer text-white text-2xl rounded-[2px]"
+          className="p-2 sm:p-3 bg-red-600 w-full font-bold cursor-pointer text-white text-lg sm:text-2xl rounded-[2px] mt-2"
         >
           {isLoginForm
             ? loginLanguage[lang].signIn
             : loginLanguage[lang].signUp}
         </button>
-
-        <p className="text-[16px] my-2 text-white ">
+        <p className="text-[14px] sm:text-[16px] my-2 text-white ">
           {isLoginForm
             ? loginLanguage[lang].newUser
             : loginLanguage[lang].existUser}

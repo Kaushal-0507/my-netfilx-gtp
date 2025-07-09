@@ -9,24 +9,25 @@ const ActorDetails = ({ actor }) => {
   if (!actor) return <div className="text-white">Loading actor details...</div>;
 
   return (
-    <div className="text-white p-6 shadow-lg ">
-      <div className="flex flex-col md:flex-row gap-8">
-        <div className="flex-shrink-0">
+    <div className="text-white bg-white/10 p-2 sm:p-4 md:p-6 shadow-lg ">
+      <div className="flex flex-col md:flex-row gap-4 md:gap-8">
+        <div className="flex-shrink-0 flex justify-center md:block">
           {actor.profile_path ? (
             <img
               src={`https://image.tmdb.org/t/p/w500${actor.profile_path}`}
               alt={actor.name}
-              className="w-64 h-96 object-cover rounded-[5px] shadow-md"
+              className="w-40 h-60 sm:w-52 sm:h-80 md:w-64 md:h-96 object-cover rounded-[5px] shadow-md mx-auto md:mx-0"
             />
           ) : (
-            <div className="w-64 h-96 bg-gray-700 rounded-lg flex items-center justify-center">
-              <span className="text-gray-400">No Image Available</span>
+            <div className="w-40 h-60 sm:w-52 sm:h-80 md:w-64 md:h-96 bg-gray-700 rounded-lg flex items-center justify-center">
+              <span className="text-gray-400 text-sm">No Image Available</span>
             </div>
           )}
         </div>
-
-        <div className="flex-grow">
-          <h1 className="text-3xl font-bold mb-2">{actor.name}</h1>
+        <div className="flex-grow mt-4 md:mt-0">
+          <h1 className="text-xl sm:text-2xl md:text-3xl font-bold mb-2">
+            {actor.name}
+          </h1>
 
           <div className="flex items-center mb-4">
             <FaFilm className="mr-2 text-yellow-400" />

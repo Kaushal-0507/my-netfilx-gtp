@@ -80,10 +80,9 @@ const GPTSearchPage = () => {
   return (
     <>
       <Header flag={false} app={false} />
-
-      <div className="flex-col mt-14 justify-center text-white">
-        <div className="flex justify-center p-5 ">
-          <div className="relative flex w-1/2">
+      <div className="flex-col mt-16 sm:mt-14 justify-center text-white px-2 sm:px-4">
+        <div className="flex flex-col items-center p-2 sm:p-5 ">
+          <div className="relative flex w-full sm:w-3/4 md:w-1/2">
             {!geminiButton ? (
               <div className="w-full">
                 <>
@@ -108,7 +107,7 @@ const GPTSearchPage = () => {
                   />
                 </>
                 {people?.length === 0 && media?.length === 0 && (
-                  <div className="font-bold text-5xl mx-2 w-[97%] text-center my-20">
+                  <div className="font-bold md:text-5xl text-2xl mx-2 w-[97%] text-center my-20">
                     Search whatever movies or shows or actors you want!
                   </div>
                 )}
@@ -122,6 +121,7 @@ const GPTSearchPage = () => {
                   className="p-3 bg-white/20 w-full rounded-[5px] outline-none"
                   onKeyDown={(e) => {
                     if (e.key === "Enter") {
+                      handleGeminiResults();
                     }
                   }}
                 />
@@ -140,11 +140,11 @@ const GPTSearchPage = () => {
 
         <>
           {!geminiButton && (
-            <div className="text-white mx-18 my-2">
+            <div className="text-white md:mx-18 mx-2  my-2">
               {people?.length > 0 && people[0]?.profile_path !== null && (
                 <div>
                   <p className="font-bold text-2xl py-2.5">Actors</p>
-                  <div className="flex gap-6 overflow-x-scroll [&::-webkit-scrollbar]:hidden mb-3">
+                  <div className="flex md:gap-6 gap-4 overflow-x-scroll [&::-webkit-scrollbar]:hidden mb-3">
                     {people.map((p) => (
                       <ActorCard
                         key={p.id}
@@ -160,7 +160,7 @@ const GPTSearchPage = () => {
               {media?.length > 0 && media[0]?.poster_path !== null && (
                 <div>
                   <p className="font-bold text-2xl py-2.5">Media</p>
-                  <div className="flex gap-4 overflow-x-scroll [&::-webkit-scrollbar]:hidden">
+                  <div className="flex gap-4 overflow-x-scroll [&::-webkit-scrollbar]:hidden mb-14 md:mb-0">
                     {media.map((m) =>
                       m.media_type === "movie" ? (
                         <MovieCard

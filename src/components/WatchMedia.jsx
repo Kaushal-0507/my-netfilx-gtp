@@ -16,8 +16,6 @@ const WatchMedia = ({ mediaId, mediaType = "movie" }) => {
   const dispatch = useDispatch();
   const categorySelected = useSelector((store) => store.category);
 
-  console.log(mediaId, mediaType);
-
   // Fetch all media data
   useMediaDetails(mediaType, mediaId);
   useMediaCredits(mediaType, mediaId);
@@ -85,12 +83,12 @@ const WatchMedia = ({ mediaId, mediaType = "movie" }) => {
           genres={genres}
         />
       </div>
-      <div className="absolute z-50 top-[90%] left-10 right-10 bg-black text-white">
-        <div className="flex gap-8 mb-2">
+      <div className="absolute z-50 top-[90%] left-4 md:left-10 md:right-10 right-4 bg-black text-white">
+        <div className="flex md:gap-8 gap-5 md:mb-2  mb-0">
           {watchCategories.map((category) => (
             <button
               key={category}
-              className={`text-lg md:text-xl font-bold whitespace-nowrap ${
+              className={`text-[14px] md:text-xl font-bold whitespace-nowrap ${
                 categorySelected === category
                   ? "text-white border-b-2 border-red-600"
                   : "text-white/50 hover:text-white"
@@ -102,13 +100,13 @@ const WatchMedia = ({ mediaId, mediaType = "movie" }) => {
           ))}
         </div>
 
-        <div className="mt-4">
+        <div className="mt-4 mb-14 md:mb-0">
           {categorySelected === "Details" && (
             <MediaDetails mediaType={mediaType} />
           )}
 
           {categorySelected === "Cast" && casts && (
-            <ActorLists title="Cast" tvShows={casts} />
+            <ActorLists title="Cast" actors={casts} />
           )}
 
           {categorySelected === "Similar" &&

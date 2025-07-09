@@ -15,13 +15,14 @@ const MainContainer = () => {
   const mainTV = tvs[0];
 
   return (
-    <div>
+    <div className="">
       {filter === "Home" && (
         <div className="overflow-x-hidden">
           <VideoBackground
             mediaId={mainHome?.id}
             image={mainHome?.backdrop_path}
             mediaType="movie"
+            poster={mainHome?.poster_path}
           />
           <VideoTitle
             mediaId={mainHome?.id}
@@ -38,6 +39,7 @@ const MainContainer = () => {
             mediaId={mainMovie?.id}
             image={mainMovie?.backdrop_path}
             mediaType="movie"
+            poster={mainMovie?.poster_path}
           />
           <VideoTitle
             title={mainMovie?.original_title}
@@ -54,6 +56,7 @@ const MainContainer = () => {
             mediaId={mainTV?.id}
             image={mainTV?.backdrop_path}
             mediaType="tv"
+            poster={mainTV?.poster_path}
           />
           <VideoTitle
             mediaId={mainTV?.id}
