@@ -50,7 +50,7 @@ const SecondaryContainer = () => {
         </div>
       )}
       {filter === "Actors" && (
-        <div className="absolute top-[10%] z-30  left-2 md:left-10 w-[93%] text-white">
+        <div className="absolute top-[10%] z-10  left-2 md:left-10 w-[93%] text-white">
           <ActorLists title={"Popular Actors"} actors={tvShows?.popularActor} />
         </div>
       )}
