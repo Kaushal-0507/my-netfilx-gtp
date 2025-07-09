@@ -15,7 +15,8 @@ const MainContainer = () => {
 
   const mainMovie = movies[0];
   const mainHome = movies[1];
-  const mainTV = tvs[0];
+  const mainTV = tvs[2];
+  console.log(mainTV);
 
   return (
     <div className="">
@@ -58,7 +59,7 @@ const MainContainer = () => {
           <VideoBackground
             mediaId={mainTV?.id}
             image={mainTV?.backdrop_path}
-            mediaType={mediaType}
+            mediaType="tv"
             poster={mainTV?.poster_path}
           />
           <VideoTitle

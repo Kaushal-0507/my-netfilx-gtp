@@ -7,9 +7,6 @@ const useTVTrailer = (movieId) => {
   const dispatch = useDispatch();
 
   const getTVTrailer = async () => {
-    dispatch(addTVTrailer(null));
-    if (!movieId) return;
-
     const data = await fetch(
       `https://api.themoviedb.org/3/tv/${movieId}/videos?language=en-US`,
       options

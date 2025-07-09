@@ -5,8 +5,8 @@ import useTVTrailer from "../hooks/useTVTrailer";
 import { TMDB_IMG_URL } from "../utils/constant";
 
 const VideoBackground = ({ mediaId, poster, image, mediaType }) => {
-  useMovieTrailer(mediaType === "movie" ? mediaId : null);
-  useTVTrailer(mediaType === "tv" ? mediaId : null);
+  useMovieTrailer(mediaId);
+  useTVTrailer(mediaId);
 
   const trailerVideo = useSelector((store) => store.movie?.trailerMovie);
   const tvTrailer = useSelector((store) => store.tv?.tvTrailer);
@@ -24,8 +24,12 @@ const VideoBackground = ({ mediaId, poster, image, mediaType }) => {
   const showMovies = mediaType
     ? mediaType === "movie"
     : filter === "Home" || filter === "Movies";
-  const showTV = mediaType ? mediaType === "tv" : filter === "TV Shows";
+  const showTV = mediaType ? mediaType === "tv" : tvTrailer;
   const trailer = showTV ? tvTrailer : showMovies ? trailerVideo : null;
+
+  console.log(trailer);
+  console.log(mediaType);
+  console.log("tv", tvTrailer);
 
   // Mobile View
   if (isMobile) {
